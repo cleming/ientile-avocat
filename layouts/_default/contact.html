@@ -1,0 +1,110 @@
+{{ define "main" }}
+<section class="page-header">
+    <div class="container">
+        <nav class="breadcrumb" aria-label="Fil d'Ariane">
+            <a href="/">Accueil</a><span class="breadcrumb__sep">/</span>
+            <span>Contact</span>
+        </nav>
+        <span class="eyebrow">Premier contact</span>
+        <h1>{{ .Title }}</h1>
+        <span class="rule" aria-hidden="true"></span>
+        {{ with .Params.lead }}<p class="lead">{{ . }}</p>{{ end }}
+    </div>
+</section>
+
+<section class="section section--paper">
+    <div class="container">
+        <div class="contact-grid">
+            <div>
+                {{ with .Site.Params.phone }}
+                <div class="contact-info__item">
+                    <div class="contact-info__label">Téléphone</div>
+                    <div class="contact-info__value">
+                        <a href="tel:{{ . }}">{{ $.Site.Params.phoneDisplay | default . }}</a>
+                    </div>
+                </div>
+                {{ end }}
+                {{ with .Site.Params.social.email }}
+                <div class="contact-info__item">
+                    <div class="contact-info__label">Email</div>
+                    <div class="contact-info__value">
+                        <a href="mailto:{{ . }}">{{ . }}</a>
+                    </div>
+                </div>
+                {{ end }}
+                {{ with .Site.Params.address }}
+                <div class="contact-info__item">
+                    <div class="contact-info__label">Adresse</div>
+                    <div class="contact-info__value">{{ . }}</div>
+                </div>
+                {{ end }}
+                {{ with .Site.Params.rdvUrl }}
+                <div class="contact-info__item">
+                    <div class="contact-info__label">Prise de rendez-vous</div>
+                    <div class="contact-info__value">
+                        <a href="{{ . }}" target="_blank" rel="noopener">Réserver un créneau en ligne →</a>
+                    </div>
+                </div>
+                {{ end }}
+
+                {{ with .Site.Params.mapsQuery }}
+                <iframe
+                    class="contact-map"
+                    style="margin-top: var(--s-3)"
+                    title="Carte du cabinet — {{ $.Site.Params.address }}"
+                    src="https://www.google.com/maps?q={{ . | safeURL }}&output=embed"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                {{ end }}
+            </div>
+
+            <div>
+                {{ if .Site.Params.formspreeEndpoint }}
+                <form class="contact-form" action="{{ .Site.Params.formspreeEndpoint }}" method="POST" aria-label="Formulaire de contact">
+                    <div class="contact-form__field">
+                        <label for="name">Nom complet</label>
+                        <input type="text" id="name" name="name" required autocomplete="name" />
+                    </div>
+                    <div class="contact-form__field">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required autocomplete="email" />
+                    </div>
+                    <div class="contact-form__field">
+                        <label for="subject">Sujet</label>
+                        <input type="text" id="subject" name="subject" required />
+                    </div>
+                    <div class="contact-form__field">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <label class="honeypot" aria-hidden="true">
+                        Ne rien remplir<input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+                    </label>
+                    <button type="submit" class="btn btn--primary">Envoyer mon message</button>
+                    <p style="margin-top: var(--s-2); font-size: 0.85rem; color: var(--ink-muted)">
+                        Réponse sous 48 h ouvrées. Les informations transmises sont traitées conformément à la
+                        <a href="/confidentialite/">politique de confidentialité</a>.
+                    </p>
+                </form>
+                {{ else }}
+                <div class="contact-form">
+                    <h2 style="margin-top:0">Écrire directement</h2>
+                    <p>Le moyen le plus rapide pour une première prise de contact :</p>
+                    <div class="btn-row" style="margin-top: var(--s-2)">
+                        {{ with .Site.Params.social.email }}
+                        <a class="btn btn--primary" href="mailto:{{ . }}">Envoyer un email</a>
+                        {{ end }}
+                        {{ with .Site.Params.phone }}
+                        <a class="btn btn--ghost" href="tel:{{ . }}">Appeler directement</a>
+                        {{ end }}
+                    </div>
+                    <p style="margin-top: var(--s-3); font-size: 0.9rem; color: var(--ink-muted); border-left: 3px solid var(--gold); padding-left: var(--s-2)">
+                        <strong>Note technique</strong> — un formulaire sera activé dès qu'un compte Formspree aura été créé (champ <code>formspreeEndpoint</code> dans la configuration).
+                    </p>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}

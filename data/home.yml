@@ -1,0 +1,28 @@
+heroEyebrow: "Cabinet d'avocat · Barreau de Lyon"
+heroTitle: "Sécuriser votre entreprise <em>au quotidien.</em>"
+heroDescription: "Conseil et contentieux en droit des affaires à Lyon. Accompagnement des dirigeants, entrepreneurs et responsables juridiques pour vos contrats, votre gouvernance et vos dossiers stratégiques."
+# Photo du hero — fichier source dans assets/, recadré et compressé par Hugo.
+heroImage: "images/Evanna-Ientile-avocate-Lyon.jpg"
+heroImageAlt: "Portrait d'Evanna Ientile, avocate au Barreau de Lyon"
+# Format du recadrage (doit rester identique dans index.html et head.html).
+heroImageFill: "920x1150 Top q78"
+
+introLabel: "Le cabinet"
+introTitle: "Un accompagnement de proximité pour les dirigeants lyonnais."
+introBody1: "Inscrite au Barreau de Lyon, j'interviens en droit des affaires pour les dirigeants qui attendent d'un avocat un interlocuteur direct, qui connaît leur dossier dans la durée — pas une équipe qui change à chaque appel."
+introBody2: "Master II en droit international des affaires : une formation solide pour sécuriser vos contrats, votre gouvernance et la vie quotidienne de votre entreprise."
+
+valuesTitle: "Une méthode qui tient en trois lignes."
+values:
+  - num: "01"
+    title: "Transparence sur les honoraires"
+    body: "Une convention claire à l'issue du premier rendez-vous — forfait, temps passé, ou résultat en complément. Pas de mauvaise surprise en cours de dossier."
+  - num: "02"
+    title: "Un interlocuteur unique"
+    body: "Les dossiers ne sont pas délégués à une équipe. Vous avez toujours en face la personne qui rédige, qui conseille, et qui défend."
+  - num: "03"
+    title: "Rigueur et réactivité dans la durée"
+    body: "Un suivi continu de vos dossiers, avec une rédaction précise qui anticipe les points de friction plutôt que les découvre en cours de route — et une réponse rapide quand le calendrier l'impose."
+
+contactTitle: "Parlons de votre <em>situation.</em>"
+contactSub: "Un premier échange de 15 à 20 minutes pour qualifier votre besoin et vous orienter, sans engagement."

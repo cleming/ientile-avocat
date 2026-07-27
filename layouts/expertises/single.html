@@ -1,0 +1,47 @@
+{{ define "main" }}
+<section class="page-header">
+    <div class="container">
+        <nav class="breadcrumb" aria-label="Fil d'Ariane">
+            <a href="/">Accueil</a><span class="breadcrumb__sep">/</span>
+            <a href="/expertises/">Expertises</a><span class="breadcrumb__sep">/</span>
+            <span>{{ .Title }}</span>
+        </nav>
+        {{ with .Params.eyebrow }}<span class="eyebrow eyebrow--dot">{{ . }}</span>{{ end }}
+        <h1>{{ .Title }}</h1>
+        {{ with .Params.lead }}<p class="lead serif-italic">{{ . }}</p>{{ end }}
+    </div>
+</section>
+
+<section class="article">
+    <div class="container">
+        <div class="article__grid">
+            <div class="article__body">
+                {{ .Content }}
+
+                <div class="article__cta">
+                    <p><em>Un cas concret à soumettre&#160;?</em> Un premier échange de 15 à 20 minutes pour qualifier votre besoin, sans engagement.</p>
+                    <div class="btn-row">
+                        {{ with .Site.Params.rdvUrl }}
+                        <a class="btn btn--primary" href="{{ . }}" target="_blank" rel="noopener">Prendre rendez-vous</a>
+                        {{ end }}
+                        <a class="btn btn--ghost" href="/contact/">Formulaire de contact</a>
+                    </div>
+                </div>
+            </div>
+
+            {{ $current := .RelPermalink }}
+            {{ $others := where (where .Site.RegularPages "Section" "expertises") "RelPermalink" "ne" $current }}
+            {{ with $others }}
+            <aside class="article__sidebar">
+                <h3>Autres domaines</h3>
+                <ul>
+                    {{ range . }}
+                    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+                    {{ end }}
+                </ul>
+            </aside>
+            {{ end }}
+        </div>
+    </div>
+</section>
+{{ end }}

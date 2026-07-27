@@ -1,4 +1,8 @@
 .idea
+.DS_Store
 public/
-!public/images
 resources/
+.hugo_build.lock
+
+# Document de travail interne — pas destiné au dépôt
+/pistes-evolution-site-ientile.pdf

@@ -1,6 +1,114 @@
 {{ define "main" }}
-    {{ partial "banner" site.Data.banner }}
-    {{ partial "spotlight" site.Data.spotlight1 }}
-    {{ partial "spotlight" site.Data.spotlight2 }}
-    {{ partial "template/footer" . }}
+{{ $d := hugo.Data.home }}
+
+{{/* --- Hero --- */}}
+<section class="hero">
+    <div class="container">
+        <div class="hero__grid">
+            <div class="hero__content">
+                <span class="hero__eyebrow">{{ $d.heroEyebrow }}</span>
+                <h1 class="hero__title">{{ $d.heroTitle | safeHTML }}</h1>
+                <p class="hero__description">{{ $d.heroDescription }}</p>
+                <div class="hero__actions">
+                    {{ with .Site.Params.rdvUrl }}
+                    <a class="btn btn--primary" href="{{ . }}" target="_blank" rel="noopener">Prendre rendez-vous</a>
+                    {{ end }}
+                    <a class="btn btn--ghost" href="/contact/">Nous écrire</a>
+                    {{ with .Site.Params.phone }}
+                    <a class="hero__phone" href="tel:{{ . }}" aria-label="Appeler le cabinet">
+                        <span>Téléphone</span>
+                        <strong>{{ $.Site.Params.phoneDisplay | default . }}</strong>
+                    </a>
+                    {{ end }}
+                </div>
+            </div>
+            <figure class="hero__image">
+                {{ $hero := (resources.Get $d.heroImage).Fill $d.heroImageFill }}
+                <img src="{{ $hero.RelPermalink }}"
+                     alt="{{ $d.heroImageAlt }}"
+                     width="{{ $hero.Width }}"
+                     height="{{ $hero.Height }}"
+                     fetchpriority="high"
+                     decoding="async" />
+            </figure>
+        </div>
+    </div>
+</section>
+
+{{/* --- Intro --- */}}
+<section class="intro">
+    <div class="container">
+        <div class="intro__grid">
+            <div class="intro__label">— {{ $d.introLabel }}</div>
+            <div class="intro__body">
+                <h2>{{ $d.introTitle }}</h2>
+                <p>{{ $d.introBody1 | safeHTML }}</p>
+                <p>{{ $d.introBody2 | safeHTML }}</p>
+                <a class="btn btn--link" href="/cabinet/">En savoir plus sur le cabinet</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{{/* --- Expertises --- */}}
+<section class="expertises" aria-labelledby="home-expertises">
+    <div class="container">
+        <div class="expertises__header">
+            <div>
+                <span class="eyebrow eyebrow--dot">Domaines</span>
+                <h2 id="home-expertises" style="margin-top: var(--s-1)">Cinq terrains, une même exigence.</h2>
+            </div>
+            <a class="btn--link" href="/expertises/">Toutes les expertises →</a>
+        </div>
+        <div class="grid grid--5">
+            {{ range $i, $p := (where .Site.RegularPages "Section" "expertises").ByWeight }}
+            <a class="expertise-card" href="{{ $p.RelPermalink }}">
+                <span class="expertise-card__num">{{ printf "%02d." (add $i 1) }}</span>
+                <h3 class="expertise-card__title">{{ $p.Title }}</h3>
+                <p class="expertise-card__desc">{{ $p.Params.summary }}</p>
+                <span class="expertise-card__link">En savoir plus</span>
+            </a>
+            {{ end }}
+        </div>
+    </div>
+</section>
+
+{{/* --- Valeurs --- */}}
+<section class="values" aria-labelledby="home-values">
+    <div class="container">
+        <div class="values__header">
+            <span class="eyebrow eyebrow--dot">Méthode</span>
+            <h2 id="home-values" style="margin-top: var(--s-1)">{{ $d.valuesTitle }}</h2>
+        </div>
+        <div class="values__list">
+            {{ range $d.values }}
+            <div class="values__item">
+                <div class="values__label">
+                    <span class="values__num">{{ .num }}</span>
+                    <h3 class="values__title">{{ .title }}</h3>
+                </div>
+                <p class="values__body">{{ .body }}</p>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</section>
+
+{{/* --- Contact strip --- */}}
+<section class="contact-strip">
+    <div class="container">
+        <span class="eyebrow">Premier contact</span>
+        <h2>{{ $d.contactTitle | safeHTML }}</h2>
+        <p>{{ $d.contactSub }}</p>
+        <div class="btn-row">
+            {{ with .Site.Params.rdvUrl }}
+            <a class="btn btn--primary" href="{{ . }}" target="_blank" rel="noopener">Prendre rendez-vous</a>
+            {{ end }}
+            <a class="btn btn--ghost" href="/contact/">Formulaire de contact</a>
+            {{ with .Site.Params.phone }}
+            <a class="btn btn--ghost" href="tel:{{ . }}">{{ $.Site.Params.phoneDisplay | default . }}</a>
+            {{ end }}
+        </div>
+    </div>
+</section>
 {{ end }}

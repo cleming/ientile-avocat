@@ -1,4 +1,11 @@
 {{ define "main" }}
-    {{ partial "single" . }}
-    {{ partial "template/footer" . }}
+<article class="static-content">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+        <a href="/">Accueil</a><span class="breadcrumb__sep">/</span>
+        <span>{{ .Title }}</span>
+    </nav>
+    <h1>{{ .Title }}</h1>
+    <span class="rule" aria-hidden="true"></span>
+    {{ .Content }}
+</article>
 {{ end }}

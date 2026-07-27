@@ -1,0 +1,71 @@
+<script>
+(function () {
+    // Mobile nav toggle
+    var nav = document.querySelector(".site-nav");
+    var toggle = nav && nav.querySelector(".site-nav__toggle");
+    if (toggle) {
+        toggle.addEventListener("click", function () {
+            var open = nav.getAttribute("data-open") === "true";
+            nav.setAttribute("data-open", open ? "false" : "true");
+            toggle.setAttribute("aria-expanded", open ? "false" : "true");
+        });
+    }
+
+    // Marquer le lien nav actif en fonction du chemin courant
+    var path = window.location.pathname.replace(/\/$/, "") || "/";
+    document.querySelectorAll(".site-nav__links a").forEach(function (a) {
+        var href = a.getAttribute("href").replace(/\/$/, "") || "/";
+        if (href === path || (href !== "/" && path.indexOf(href) === 0)) {
+            a.setAttribute("aria-current", "page");
+        }
+    });
+})();
+</script>
+
+{{/* Konami code — lazy, ne charge tsParticles que si la séquence est tapée. */}}
+{{ if .IsHome }}
+<script>
+(function () {
+    var KONAMI = "38384040373937396665";
+    var buffer = "";
+    var timer = null;
+    function loadTs() {
+        return new Promise(function (resolve, reject) {
+            if (window.tsParticles) return resolve(window.tsParticles);
+            var s = document.createElement("script");
+            s.src = "https://cdn.jsdelivr.net/npm/tsparticles@1.22.1";
+            s.onload = function () { resolve(window.tsParticles); };
+            s.onerror = reject;
+            document.head.appendChild(s);
+        });
+    }
+    function confetti() {
+        loadTs().then(function (ts) {
+            ts.load("main", {
+                fullScreen: { enable: true, zIndex: 100 },
+                particles: {
+                    number: { value: 0 },
+                    shape: { type: "image", options: { image: { src: "https://i.pinimg.com/originals/2e/71/bd/2e71bd05ffcf3137ff6a71b7a4d2580c.png" } } },
+                    opacity: { value: 1, animation: { enable: true, minimumValue: 0, speed: 2, startValue: "max", destroy: "min" } },
+                    size: { value: 25, random: { enable: true, minimumValue: 3 } },
+                    life: { duration: { sync: true, value: 5 }, count: 1 },
+                    move: { enable: true, gravity: { enable: true, acceleration: 20 }, speed: 50, decay: 0.05, outModes: { default: "destroy", top: "none" } }
+                },
+                interactivity: { events: { resize: true } },
+                detectRetina: true,
+                emitters: [
+                    { direction: "top-right", rate: { delay: 0.1, quantity: 2 }, position: { x: 0, y: 50 }, size: { width: 0, height: 0 } },
+                    { direction: "top-left", rate: { delay: 0.1, quantity: 2 }, position: { x: 100, y: 50 }, size: { width: 0, height: 0 } }
+                ]
+            });
+        });
+    }
+    document.addEventListener("keydown", function (e) {
+        clearTimeout(timer);
+        buffer += e.keyCode;
+        if (buffer === KONAMI) { buffer = ""; confetti(); }
+        timer = setTimeout(function () { buffer = ""; }, 2000);
+    }, false);
+})();
+</script>
+{{ end }}

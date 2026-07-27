@@ -1,0 +1,62 @@
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	{{ $pageTitle := cond .IsHome .Site.Title (printf "%s — %s" .Title .Site.Params.AuthorName) }}
+	{{ $pageDesc := cond (ne .Description "") .Description .Site.Params.description }}
+	<title>{{ $pageTitle }}</title>
+	<meta name="description" content="{{ $pageDesc }}" />
+	<meta name="author" content="{{ .Site.Params.AuthorName }}" />
+	<meta name="theme-color" content="#f5efe2" />
+	<link rel="canonical" href="{{ .Permalink }}" />
+
+	<meta property="og:type" content="{{ cond .IsPage "article" "website" }}" />
+	<meta property="og:locale" content="fr_FR" />
+	<meta property="og:title" content="{{ $pageTitle }}" />
+	<meta property="og:description" content="{{ $pageDesc }}" />
+	<meta property="og:url" content="{{ .Permalink }}" />
+	{{ with .Site.Params.logo }}<meta property="og:image" content="{{ . | absURL }}" />{{ end }}
+	<meta name="twitter:card" content="summary_large_image" />
+
+	{{ if .Site.Params.favicon }}{{ partial "favicon" }}{{ end }}
+
+	<!-- Google Fonts : Inter (sans, dominant) + Instrument Serif (serif italique, accents) -->
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" />
+
+	{{/* Hero image preload for LCP sur la home uniquement */}}
+	{{ if .IsHome }}{{ with resources.Get hugo.Data.home.heroImage }}
+	{{ $hero := .Fill hugo.Data.home.heroImageFill }}<link rel="preload" as="image" href="{{ $hero.RelPermalink }}" fetchpriority="high" />
+	{{ end }}{{ end }}
+
+	<!-- Feuille de style principale -->
+	{{ $custom := resources.Get "css/custom.css" }}
+	{{ if hugo.IsServer }}
+	<link rel="stylesheet" href="{{ $custom.RelPermalink }}">
+	{{ else }}
+	<link rel="stylesheet" href="{{ ($custom | minify | fingerprint).RelPermalink }}">
+	{{ end }}
+
+	{{/* Données structurées — SEO local */}}
+	{{ $ld := dict
+		"@context" "https://schema.org"
+		"@type" "LegalService"
+		"name" (printf "%s — Avocate" .Site.Params.AuthorName)
+		"description" .Site.Params.description
+		"url" .Site.BaseURL
+		"telephone" .Site.Params.phone
+		"email" .Site.Params.social.email
+		"areaServed" "Lyon"
+		"address" (dict
+			"@type" "PostalAddress"
+			"streetAddress" .Site.Params.addressStreet
+			"addressLocality" .Site.Params.addressCity
+			"postalCode" .Site.Params.addressPostalCode
+			"addressCountry" "FR")
+		"sameAs" (slice .Site.Params.social.linkedin)
+	}}
+	{{ with .Site.Params.logo }}{{ $ld = merge $ld (dict "image" (. | absURL)) }}{{ end }}
+	<script type="application/ld+json">{{ $ld | jsonify (dict "indent" "  ") | safeJS }}</script>
+
+</head>

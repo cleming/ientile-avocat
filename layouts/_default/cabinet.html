@@ -1,0 +1,92 @@
+{{ define "main" }}
+<section class="page-header">
+    <div class="container">
+        <nav class="breadcrumb" aria-label="Fil d'Ariane">
+            <a href="/">Accueil</a><span class="breadcrumb__sep">/</span>
+            <span>Le cabinet</span>
+        </nav>
+        <span class="eyebrow">Présentation</span>
+        <h1>{{ .Title }}</h1>
+        <span class="rule" aria-hidden="true"></span>
+        {{ with .Params.lead }}<p class="lead">{{ . }}</p>{{ end }}
+    </div>
+</section>
+
+<section class="section section--paper">
+    <div class="container">
+        <div class="cabinet-grid">
+            <div class="article__body">
+                {{ .Content }}
+
+                <h2>Parcours</h2>
+                <ul class="parcours">
+                    <li>
+                        <span class="parcours__year">2020</span>
+                        <span class="parcours__label">
+                            <strong>CAPA</strong>
+                            <span>Certificat d'aptitude à la profession d'avocat</span>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="parcours__year">2018</span>
+                        <span class="parcours__label">
+                            <strong>Diplôme universitaire de Droit anglais</strong>
+                            <span>Université Jean Moulin Lyon 3</span>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="parcours__year">2017</span>
+                        <span class="parcours__label">
+                            <strong>Master II Droit international des affaires</strong>
+                            <span>Université Jean Moulin Lyon 3</span>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="parcours__year">2016</span>
+                        <span class="parcours__label">
+                            <strong>Master I Droit de l'entreprise</strong>
+                            <span>Université Jean Moulin Lyon 3</span>
+                        </span>
+                    </li>
+                </ul>
+
+                <h2>Enseignement</h2>
+                <ul class="parcours parcours--plain">
+                    <li>
+                        <span class="parcours__label">
+                            <strong>Travaux dirigés de Droit commercial</strong>
+                            <span>Université Claude Bernard Lyon 1</span>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="parcours__label">
+                            <strong>Cours magistraux de Droit des contrats et travaux dirigés</strong>
+                            <span>Université Jean Moulin Lyon 3</span>
+                        </span>
+                    </li>
+                </ul>
+
+                <div class="article__cta" style="margin-top: var(--s-5)">
+                    <p><strong>Un cas concret à me soumettre ?</strong> Un premier échange permet souvent de clarifier les options.</p>
+                    <div class="btn-row">
+                        {{ with .Site.Params.rdvUrl }}
+                        <a class="btn btn--primary" href="{{ . }}" target="_blank" rel="noopener">Prendre rendez-vous</a>
+                        {{ end }}
+                        <a class="btn btn--ghost" href="/contact/">Formulaire de contact</a>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <figure class="cabinet-image">
+                    {{ $portrait := (resources.Get "images/Evanna-Ientile-portrait.jpg").Fill "840x1120 Center q78" }}
+                    <img src="{{ $portrait.RelPermalink }}"
+                         alt="Evanna Ientile, avocate au Barreau de Lyon"
+                         width="{{ $portrait.Width }}" height="{{ $portrait.Height }}"
+                         loading="lazy" decoding="async" />
+                </figure>
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}

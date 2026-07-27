@@ -1,0 +1,43 @@
+{{ define "main" }}
+<section class="page-header">
+    <div class="container">
+        <nav class="breadcrumb" aria-label="Fil d'Ariane">
+            <a href="/">Accueil</a><span class="breadcrumb__sep">/</span>
+            <span>Expertises</span>
+        </nav>
+        <span class="eyebrow">Domaines d'intervention</span>
+        <h1>{{ .Title }}</h1>
+        <span class="rule" aria-hidden="true"></span>
+        <div class="lead">{{ .Content }}</div>
+    </div>
+</section>
+
+<section class="section section--paper">
+    <div class="container">
+        <div class="grid grid--2">
+            {{ range $i, $p := .Pages.ByWeight }}
+            <a class="expertise-card" href="{{ $p.RelPermalink }}">
+                <span class="expertise-card__num">{{ printf "%02d." (add $i 1) }}</span>
+                <h2 class="expertise-card__title">{{ $p.Title }}</h2>
+                <p class="expertise-card__desc">{{ $p.Params.summary }}</p>
+                <span class="expertise-card__link">En savoir plus</span>
+            </a>
+            {{ end }}
+        </div>
+    </div>
+</section>
+
+<section class="contact-strip">
+    <div class="container container--narrow">
+        <span class="eyebrow">Votre situation</span>
+        <h2>Ne rentre pas exactement dans une case ?</h2>
+        <p class="contact-strip__meta">C'est souvent le cas. Un premier échange permet de clarifier la bonne orientation.</p>
+        <div class="btn-row" style="justify-content:center">
+            {{ with .Site.Params.rdvUrl }}
+            <a class="btn btn--primary" href="{{ . }}" target="_blank" rel="noopener">Prendre rendez-vous</a>
+            {{ end }}
+            <a class="btn btn--ghost" href="/contact/">Nous contacter</a>
+        </div>
+    </div>
+</section>
+{{ end }}
