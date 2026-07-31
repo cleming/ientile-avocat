@@ -1,6 +1,6 @@
 ---
 title: "Droit des sociétés"
-summary: "Création, gouvernance, pactes d'associés, cessions — sécuriser la vie juridique de votre entreprise."
+summary: "Création, gouvernance, pactes d'associés, cessions : sécuriser la vie juridique de votre entreprise."
 description: "Avocat en droit des sociétés à Lyon. Création de société, pacte d'associés, cession de parts, gouvernance, assemblées générales."
 eyebrow: "Vie de la société"
 lead: "Votre société est vivante. Ses statuts et ses équilibres doivent l'être aussi."

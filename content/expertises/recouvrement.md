@@ -1,6 +1,6 @@
 ---
 title: "Recouvrement & précontentieux"
-summary: "Mises en demeure, injonctions de payer, saisies — transformer une créance bloquée en encaissement."
+summary: "Mises en demeure, injonctions de payer, saisies : transformer une créance bloquée en encaissement."
 description: "Avocat pour le recouvrement de créances B2B à Lyon. Mise en demeure, injonction de payer, procédure, saisies. Action rapide et lisible."
 eyebrow: "Impayés B2B"
 lead: "Un impayé qui traîne perd 10 % de sa valeur par trimestre. L'enjeu, c'est la rapidité et la bonne procédure."

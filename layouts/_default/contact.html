@@ -51,7 +51,7 @@
                 <iframe
                     class="contact-map"
                     style="margin-top: var(--s-3)"
-                    title="Carte du cabinet — {{ $.Site.Params.address }}"
+                    title="Carte du cabinet : {{ $.Site.Params.address }}"
                     src="https://www.google.com/maps?q={{ . | safeURL }}&output=embed"
                     loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -98,8 +98,8 @@
                         <a class="btn btn--ghost" href="tel:{{ . }}">Appeler directement</a>
                         {{ end }}
                     </div>
-                    <p style="margin-top: var(--s-3); font-size: 0.9rem; color: var(--ink-muted); border-left: 3px solid var(--gold); padding-left: var(--s-2)">
-                        <strong>Note technique</strong> — un formulaire sera activé dès qu'un compte Formspree aura été créé (champ <code>formspreeEndpoint</code> dans la configuration).
+                    <p style="margin-top: var(--s-3); font-size: 0.9rem; color: var(--ink-muted)">
+                        Réponse sous 48 h ouvrées.
                     </p>
                 </div>
                 {{ end }}

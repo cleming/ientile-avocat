@@ -1,5 +1,5 @@
 /* ================================================================
-   Cabinet Evanna Ientile — feuille de style
+   Cabinet Evanna Ientile : feuille de style
    DA : monochrome off-white + near-black, une touche de navy profond.
    Typographie : Inter bold en display + Instrument Serif en accent italique.
    Inspirée des cabinets d'affaires contemporains (leven-avocat, avocance).
@@ -189,7 +189,7 @@ p { margin-bottom: var(--s-2); color: var(--ink-soft); }
     .grid--3 { grid-template-columns: repeat(3, 1fr); }
     .grid--4 { grid-template-columns: repeat(2, 1fr); }
 
-    /* 5 cartes : grille de 6 colonnes — 2 par rangée, la dernière pleine largeur */
+    /* 5 cartes : grille de 6 colonnes, 2 par rangée, la dernière pleine largeur */
     .grid--5 { grid-template-columns: repeat(6, 1fr); }
     .grid--5 > * { grid-column: span 3; }
 }
@@ -197,7 +197,7 @@ p { margin-bottom: var(--s-2); color: var(--ink-soft); }
 @media (min-width: 1024px) {
     .grid--4 { grid-template-columns: repeat(4, 1fr); }
 
-    /* 3 cartes sur la première rangée, 2 sur la seconde — les deux pleines largeurs */
+    /* 3 cartes sur la première rangée, 2 sur la seconde, les deux pleines largeurs */
     .grid--5 > *:nth-child(-n+3) { grid-column: span 2; }
     .grid--5 > *:nth-child(n+4) { grid-column: span 3; }
 }
@@ -454,7 +454,7 @@ p { margin-bottom: var(--s-2); color: var(--ink-soft); }
 }
 
 /* ================================================================
-   HERO — portrait à droite, headline à gauche
+   HERO : portrait à droite, headline à gauche
    ================================================================ */
 
 .hero {
@@ -590,7 +590,7 @@ p { margin-bottom: var(--s-2); color: var(--ink-soft); }
 }
 
 /* ================================================================
-   Section "Le cabinet" — intro
+   Section "Le cabinet" : intro
    ================================================================ */
 
 .intro {
@@ -616,6 +616,18 @@ p { margin-bottom: var(--s-2); color: var(--ink-soft); }
     text-transform: uppercase;
     color: var(--ink-muted);
     padding-top: 0.4em;
+}
+
+/* Filet décoratif devant le label, dessiné en CSS plutôt qu'avec un caractère
+   (ignoré par les lecteurs d'écran, contrairement à un tiret cadratin). */
+.intro__label::before {
+    content: "";
+    display: inline-block;
+    width: 1.1em;
+    height: 1px;
+    background: currentColor;
+    margin-right: 0.5em;
+    vertical-align: middle;
 }
 
 .intro__body h2 {
@@ -737,7 +749,7 @@ p { margin-bottom: var(--s-2); color: var(--ink-soft); }
 }
 
 /* ================================================================
-   Positioning block — section sombre
+   Positioning block : section sombre
    ================================================================ */
 
 .positioning {

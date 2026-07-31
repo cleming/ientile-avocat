@@ -2,7 +2,7 @@
 ## Basic Configuration
 ## -----------------------------------------------
 
-title = "Evanna Ientile — Avocate en droit des affaires à Lyon"
+title = "Evanna Ientile, avocate en droit des affaires à Lyon"
 baseURL = "https://www.ientile-avocat.fr/"
 languageCode = "fr-FR"
 defaultContentLanguage = "fr"
@@ -23,7 +23,7 @@ disableKinds = ["taxonomy", "term"]
   favicon = true
   AuthorName = "Evanna Ientile"
 
-  # Coordonnées — utilisées dans le header, le footer et les données structurées.
+  # Coordonnées : utilisées dans le header, le footer et les données structurées.
   phone = "+33621777773"
   phoneDisplay = "06 21 77 77 73"
   address = "185 rue Duguesclin, 69003 Lyon"
@@ -31,15 +31,15 @@ disableKinds = ["taxonomy", "term"]
   addressCity = "Lyon"
   addressPostalCode = "69003"
 
-  # Prise de RDV en ligne — laisser vide pour masquer le bouton.
+  # Prise de RDV en ligne. Laisser vide pour masquer le bouton.
   # Créer un compte sur https://calendly.com ou https://cal.com puis coller l'URL ici.
   rdvUrl = "https://consultation.avocat.fr/avocat-lyon/evanna-ientile-59497.html"
 
-  # Formulaire de contact — laisser vide pour afficher les CTAs téléphone/email à la place.
+  # Formulaire de contact. Laisser vide pour afficher les CTAs téléphone/email à la place.
   # Créer un compte sur https://formspree.io puis coller l'endpoint (ex: https://formspree.io/f/xxxxxxx).
   formspreeEndpoint = ""
 
-  # Carte intégrée — iframe Google Maps. Paramètre `q` de l'URL d'embed.
+  # Carte intégrée (iframe Google Maps). Paramètre `q` de l'URL d'embed.
   mapsQuery = "185+rue+Duguesclin,+69003+Lyon"
 
 [Params.social]
@@ -51,7 +51,7 @@ disableKinds = ["taxonomy", "term"]
   [[module.imports]]
     path = "github.com/caressofsteel/hugo-story"
 
-  # Monter explicitement les dossiers locaux — nécessaire pour que le CSS custom
+  # Monter explicitement les dossiers locaux : nécessaire pour que le CSS custom
   # placé dans assets/ soit résolu par resources.Get.
   [[module.mounts]]
     source = "assets"

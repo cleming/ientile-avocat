@@ -2,7 +2,7 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-	{{ $pageTitle := cond .IsHome .Site.Title (printf "%s — %s" .Title .Site.Params.AuthorName) }}
+	{{ $pageTitle := cond .IsHome .Site.Title (printf "%s · %s" .Title .Site.Params.AuthorName) }}
 	{{ $pageDesc := cond (ne .Description "") .Description .Site.Params.description }}
 	<title>{{ $pageTitle }}</title>
 	<meta name="description" content="{{ $pageDesc }}" />
@@ -38,11 +38,11 @@
 	<link rel="stylesheet" href="{{ ($custom | minify | fingerprint).RelPermalink }}">
 	{{ end }}
 
-	{{/* Données structurées — SEO local */}}
+	{{/* Données structurées : SEO local */}}
 	{{ $ld := dict
 		"@context" "https://schema.org"
 		"@type" "LegalService"
-		"name" (printf "%s — Avocate" .Site.Params.AuthorName)
+		"name" (printf "%s, avocate" .Site.Params.AuthorName)
 		"description" .Site.Params.description
 		"url" .Site.BaseURL
 		"telephone" .Site.Params.phone

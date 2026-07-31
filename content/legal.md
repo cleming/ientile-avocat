@@ -1,6 +1,6 @@
 ---
 title: "Mentions légales"
-description: "Mentions légales du site ientile-avocat.fr — éditeur, hébergeur, conditions d'utilisation."
+description: "Mentions légales du site ientile-avocat.fr : éditeur, hébergeur, conditions d'utilisation."
 slug: "mentions-legales"
 aliases:
   - /legal/

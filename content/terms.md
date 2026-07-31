@@ -1,6 +1,6 @@
 ---
 title: "Politique de confidentialité"
-description: "Politique de confidentialité et traitement des données personnelles — cabinet Evanna Ientile."
+description: "Politique de confidentialité et traitement des données personnelles du cabinet Evanna Ientile."
 slug: "confidentialite"
 aliases:
   - /terms/
