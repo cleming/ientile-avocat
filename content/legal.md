@@ -9,7 +9,7 @@ L'accès et l'utilisation du présent site sont soumis aux conditions suivantes 
 
 - **Site web** : https://www.ientile-avocat.fr/ 
 - **Editeur du site** : Evanna IENTILE 
-- **Cabinet** : 185 rue Duguesclin - 69003 Lyon
+- **Cabinet** : 103 avenue de Saxe - 69003 Lyon
 - Avocat au Barreau de Lyon - Numéro de Toque [3402](http://www.barreaulyon.com/fiche-avocat/detail/evanna-ientile) 
 - Exerçant sous le numéro SIREN [851 894 154 00026](https://societe.ninja/data.php?siren=851894154)
 - **Numéro de téléphone** : +33621777773

@@ -26,8 +26,8 @@ disableKinds = ["taxonomy", "term"]
   # Coordonnées : utilisées dans le header, le footer et les données structurées.
   phone = "+33621777773"
   phoneDisplay = "06 21 77 77 73"
-  address = "185 rue Duguesclin, 69003 Lyon"
-  addressStreet = "185 rue Duguesclin"
+  address = "103 avenue de Saxe, 69003 Lyon"
+  addressStreet = "103 avenue de Saxe"
   addressCity = "Lyon"
   addressPostalCode = "69003"
 
@@ -40,7 +40,7 @@ disableKinds = ["taxonomy", "term"]
   formspreeEndpoint = ""
 
   # Carte intégrée (iframe Google Maps). Paramètre `q` de l'URL d'embed.
-  mapsQuery = "185+rue+Duguesclin,+69003+Lyon"
+  mapsQuery = "103+avenue+de+Saxe,+69003+Lyon"
 
 [Params.social]
   linkedin = "https://www.linkedin.com/in/evanna-ientile-a57b1b97/"
