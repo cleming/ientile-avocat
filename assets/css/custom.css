@@ -1326,6 +1326,30 @@ p { margin-bottom: var(--s-2); color: var(--ink-soft); }
     color: #706d66;
 }
 
+.site-footer__credit {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75em;
+}
+
+.site-footer__credit-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.35em 0.9em;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+    color: var(--paper);
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.site-footer__credit-btn:hover,
+.site-footer__credit-btn:focus-visible {
+    background: var(--paper);
+    border-color: var(--paper);
+    color: var(--ink);
+}
+
 .site-footer__socials {
     display: flex;
     gap: 0.5em;
